@@ -86,7 +86,8 @@ services:
           memory: 100M
     volumes:
       - ./src/grafana/grafana.ini:/etc/grafana/grafana.ini
-      - ./src/grafana/provisioning/:/etc/grafana/provisioning/
+      - ./src/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./src/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
     ports:
       - "3000:3000"
     logging: *logging
