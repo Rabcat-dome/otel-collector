@@ -80,10 +80,11 @@ services:
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
+    restart: always
     deploy:
       resources:
         limits:
-          memory: 100M
+          memory: 200M
     volumes:
       - ./src/grafana/grafana.ini:/etc/grafana/grafana.ini
       - ./src/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
