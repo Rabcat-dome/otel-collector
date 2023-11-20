@@ -7,10 +7,10 @@ receivers:
     protocols:
       grpc:
       http:
+        endpoint: 0.0.0.0:4318
         cors:
-          allowed_origins:
-            - "http://*"
-            - "https://*"
+          allowed_origins: ["*"]
+          allowed_headers: ["*"]
 
 exporters:
   prometheus:
@@ -23,6 +23,7 @@ exporters:
       label1: value1
 
   logging:
+    verbosity: Detailed
 
 processors:
   batch:
@@ -38,6 +39,9 @@ extensions:
 #   spanmetrics:
 
 service:
+  telemetry:
+    logs:
+      level: "debug"
   pipelines:
     traces:
       receivers: [otlp]
